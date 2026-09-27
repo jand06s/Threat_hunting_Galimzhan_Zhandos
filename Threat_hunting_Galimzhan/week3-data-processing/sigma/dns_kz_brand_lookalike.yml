@@ -1,0 +1,58 @@
+title: DNS Query to KZ Brand Lookalike Domain
+id: 6f1c1a2e-3b7d-4a55-9d3e-7c2b8f0a4e11
+status: experimental
+description: |
+  Detects DNS queries for domains that contain a Kazakhstan brand keyword
+  (Kaspi, Halyk/Homebank, eGov, Kazpost, OLX.kz) but are NOT the official domains.
+  Based on Week 2 findings: attackers put the brand as a keyword on cheap foreign
+  TLDs (e.g. kaspibank.auth-telegramm.ru, halykbankres.xyz, post-kz.lol).
+references:
+  - https://github.com/Phishing-Database/Phishing.Database
+  - https://attack.mitre.org/techniques/T1566/002/
+author: Galimzhan Zhandos
+date: 2026-09-27
+tags:
+  - attack.initial-access
+  - attack.t1566.002
+  - attack.resource-development
+  - attack.t1583.001
+logsource:
+  category: dns
+detection:
+  selection_brand:
+    query|contains:
+      - 'kaspi'
+      - 'halyk'
+      - 'homebank'
+      - 'egov'
+      - 'kazpost'
+      - 'post-kz'
+      - 'olxkz'
+      - 'olx-kz'
+  filter_official_exact:
+    query:
+      - 'kaspi.kz'
+      - 'halykbank.kz'
+      - 'homebank.kz'
+      - 'egov.kz'
+      - 'kazpost.kz'
+      - 'post.kz'
+      - 'olx.kz'
+  filter_official_sub:   # v3: leading dot, so "fakekaspi.kz" is NOT treated as official
+    query|endswith:
+      - '.kaspi.kz'
+      - '.halykbank.kz'
+      - '.homebank.kz'
+      - '.egov.kz'
+      - '.kazpost.kz'
+      - '.post.kz'
+      - '.olx.kz'
+  filter_known_fp:   # tuning after offline test (v2)
+    query|contains:
+      - 'kaspian'
+      - 'turkiyegov'
+  condition: selection_brand and not 1 of filter_*
+falsepositives:
+  - Unrelated words containing the keyword (e.g. "kaspian", "turkiyegov"); tune with an allowlist
+  - Partner/CDN domains of the brands
+level: medium
