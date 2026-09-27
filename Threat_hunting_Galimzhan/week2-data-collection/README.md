@@ -80,13 +80,13 @@ The script runs these hunting queries (each excludes the official hosts):
 
 For every candidate domain it also resolves the IP and pulls **org / ASN / country / open ports**.
 
-> 📸 **TODO (screenshots):** `images/shodan_query.png` (Shodan web UI with one query) and a short excerpt of `data/shodan_host_enrichment.csv`.
+
 
 ## 5. Step 4: VirusTotal
 
 `enrich_virustotal.py` adds **detections, registrar, creation date, categories and A records** (free API: 4 req/min, so it checks the brand rows + 30 others by default).
 
-> 📸 **TODO (screenshots):** `images/virustotal_kaspibank.png` (VT page for `kaspibank.auth-telegramm.ru`) and the output CSV.
+
 
 ## 6. Step 5: Maltego
 
@@ -94,7 +94,7 @@ The Maltego import file is `maltego/maltego_import.csv`, with steps in [`maltego
 
 ![Link graph](images/link_graph.png)
 
-> 📸 **TODO (screenshot):** `images/maltego_graph.png` after running DNS/WHOIS transforms.
+
 
 ## 7. Findings (answering the PIRs)
 
