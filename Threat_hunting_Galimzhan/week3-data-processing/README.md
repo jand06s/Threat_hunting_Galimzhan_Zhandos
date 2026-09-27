@@ -75,7 +75,6 @@ With **Week 2 enrichment** (VirusTotal / Shodan CSVs present), `normalize.py` al
 - Event tags: `tlp:clear`, `type:OSINT`, `phishing:techniques="fake-website"`, ATT&CK galaxies **T1566, T1566.002, T1583.001, T1584**.
 - Attribute tags: `confidence:*`, `brand:*`, `cluster:*`, so you can filter in the UI by `cluster:C01-kit`.
 
-> 📸 **TODO (screenshots):** `images/misp_login.png`, `images/misp_event.png`, `images/misp_attributes.png`, `images/misp_correlation.png` (list in DEPLOY.md).
 
 ## 5. Sigma rules (from intelligence to detection)
 
