@@ -1,0 +1,6 @@
+# dns_kz_brand_lookalike.yml
+(query:(*kaspi* OR *halyk* OR *homebank* OR *egov* OR *kazpost* OR *post\-kz* OR *olxkz* OR *olx\-kz*)) AND (NOT ((query:(kaspi.kz OR halykbank.kz OR homebank.kz OR egov.kz OR kazpost.kz OR post.kz OR olx.kz)) OR (query:(*.kaspi.kz OR *.halykbank.kz OR *.homebank.kz OR *.egov.kz OR *.kazpost.kz OR *.post.kz OR *.olx.kz)) OR (query:(*kaspian* OR *turkiyegov*))))
+
+# proxy_kz_phishing_kit_path.yml
+(c-uri:*\/m\/sing\/* AND cs-host:*.com.kz) OR (c-uri:(*\/acessomob\/loginautentica.php* OR *\/acessodes\/login\/logininicial.php*))
+
