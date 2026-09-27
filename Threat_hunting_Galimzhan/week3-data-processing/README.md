@@ -10,7 +10,7 @@ Lecture tools: MISP, Elastic Stack, Sigma rules. Recommended reading: MISP Train
 
 ## 1. Pipeline
 
-```mermaid
+
 flowchart LR
     A[Week 2 CSV<br/>204 rows] --> B[Refang<br/>hxxp→http, [.]→.]
     B --> C[Normalize<br/>lowercase, strip www,<br/>IDN→punycode]
