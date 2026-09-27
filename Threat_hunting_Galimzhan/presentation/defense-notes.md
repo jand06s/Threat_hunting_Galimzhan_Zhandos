@@ -11,14 +11,5 @@ Show the GitHub repo (or the DOCX report) and go in this order. Timing is cumula
 | 4:30–6:50 | Week 3: pipeline, clusters, MISP, Sigma | Refang → normalize → dedup → allowlist → correlate → score. 2 false-positive types. Kit signature: **5 Apple domains = 1 operator**. MISP: 312 attributes, TLP + ATT&CK tags, `to_ids` only for medium+. **Demo:** MISP event (or screenshot). Sigma → Lucene, tested: 5/6 detected, 0 FP, evasion gap fixed in v3. |
 | 6:50–7:30 | Conclusions | Global feeds miss local brands. `.kz` = infrastructure for foreign campaigns. Next: Week 4, the Kill Chain. |
 
-## Likely questions
-
-Questions with answers (RU + EN) are in section 8 of the Russian guide (Poyasneniya_Weeks1-3_RU.docx); the English speech text is in section 7.
-
-## Checklist before the defense
-
-- [x] Push the repo to GitHub (github.com/jand06s/Threat_hunting_Galimzhan)
-- [ ] Run `enrich_shodan.py` + `enrich_virustotal.py` with your API keys, then re-run `normalize.py` and `misp_import.py`, and commit the CSVs
-- [ ] Screenshots: Shodan query, VirusTotal page, Maltego graph, MISP (login, event, attributes, correlation)
-- [ ] Put the screenshots into the READMEs (📸 TODO) and the DOCX (yellow boxes)
+the READMEs (📸 TODO) and the DOCX (yellow boxes)
 - [ ] Rehearse once with a timer (≤ 7:30)
