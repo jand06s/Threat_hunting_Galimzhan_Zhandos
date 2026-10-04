@@ -1,0 +1,118 @@
+{
+  "name": "W4 Classiscam / OLX.kz",
+  "description": "Classiscam: fake 'OLX delivery' scam against sellers on OLX.kz",
+  "domain": "enterprise-attack",
+  "versions": {
+    "attack": "16",
+    "navigator": "5.1.0",
+    "layer": "4.5"
+  },
+  "techniques": [
+    {
+      "techniqueID": "T1593",
+      "tactic": "reconnaissance",
+      "score": 1,
+      "comment": "Kill Chain: Reconnaissance",
+      "enabled": true
+    },
+    {
+      "techniqueID": "T1589",
+      "tactic": "reconnaissance",
+      "score": 1,
+      "comment": "Kill Chain: Reconnaissance",
+      "enabled": true
+    },
+    {
+      "techniqueID": "T1583.001",
+      "tactic": "resource-development",
+      "score": 1,
+      "comment": "Kill Chain: Weaponization",
+      "enabled": true
+    },
+    {
+      "techniqueID": "T1588.002",
+      "tactic": "resource-development",
+      "score": 1,
+      "comment": "Kill Chain: Weaponization",
+      "enabled": true
+    },
+    {
+      "techniqueID": "T1585.001",
+      "tactic": "resource-development",
+      "score": 1,
+      "comment": "Kill Chain: Weaponization",
+      "enabled": true
+    },
+    {
+      "techniqueID": "T1608.005",
+      "tactic": "resource-development",
+      "score": 1,
+      "comment": "Kill Chain: Weaponization",
+      "enabled": true
+    },
+    {
+      "techniqueID": "T1566.003",
+      "tactic": "initial-access",
+      "score": 1,
+      "comment": "Kill Chain: Delivery",
+      "enabled": true
+    },
+    {
+      "techniqueID": "T1566.002",
+      "tactic": "initial-access",
+      "score": 1,
+      "comment": "Kill Chain: Delivery",
+      "enabled": true
+    },
+    {
+      "techniqueID": "T1204.001",
+      "tactic": "execution",
+      "score": 1,
+      "comment": "Kill Chain: Exploitation",
+      "enabled": true
+    },
+    {
+      "techniqueID": "T1598.003",
+      "tactic": "reconnaissance",
+      "score": 1,
+      "comment": "Kill Chain: Exploitation",
+      "enabled": true
+    },
+    {
+      "techniqueID": "T1078",
+      "tactic": "persistence",
+      "score": 1,
+      "comment": "Kill Chain: Installation",
+      "enabled": true
+    },
+    {
+      "techniqueID": "T1102",
+      "tactic": "command-and-control",
+      "score": 1,
+      "comment": "Kill Chain: Command & Control",
+      "enabled": true
+    },
+    {
+      "techniqueID": "T1657",
+      "tactic": "impact",
+      "score": 1,
+      "comment": "Kill Chain: Actions on Objectives",
+      "enabled": true
+    },
+    {
+      "techniqueID": "T1566.004",
+      "tactic": "initial-access",
+      "score": 1,
+      "comment": "Kill Chain: Actions on Objectives",
+      "enabled": true
+    }
+  ],
+  "gradient": {
+    "colors": [
+      "#c53030",
+      "#c53030"
+    ],
+    "minValue": 0,
+    "maxValue": 1
+  }
+}

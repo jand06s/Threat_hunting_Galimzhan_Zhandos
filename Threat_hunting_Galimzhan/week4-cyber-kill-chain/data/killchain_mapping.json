@@ -1,0 +1,120 @@
+{
+  "meta": {
+    "author": "Galimzhan Zhandos (CS-2427)",
+    "date": "2026-10-04",
+    "attack_version": "ATT&CK Enterprise v16",
+    "note": "Each Kill Chain stage is mapped to the ATT&CK techniques that describe it. 'evidence' links the stage to public reporting and to my own Week 2-3 data."
+  },
+  "cases": [
+    {
+      "id": "classiscam",
+      "short": "Classiscam / OLX.kz",
+      "title": "Classiscam: fake 'OLX delivery' scam against sellers on OLX.kz",
+      "confidence": "high (documented by Group-IB; Kazakh OLX version seen since August 2020)",
+      "sources": [
+        "Group-IB, Inside Classiscam (2021): https://www.group-ib.com/blog/classiscam/",
+        "Group-IB, Classiscam 2023 press release: https://www.group-ib.com/media-center/press-releases/classiscam-2023/",
+        "Group-IB, Unmasking the Classiscam in Central Asia (2025, Uzbekistan/Kyrgyzstan, same scheme next door): https://www.group-ib.com/blog/unmasking-the-classiscam-in-central-asia/"
+      ],
+      "stages": [
+        {"stage": "Reconnaissance",
+         "what_happens": "A 'worker' browses OLX.kz for sellers with fresh ads (electronics, furniture) and takes their name and phone number from the ad.",
+         "techniques": [
+           {"id": "T1593", "name": "Search Open Websites/Domains", "tactic": "reconnaissance"},
+           {"id": "T1589", "name": "Gather Victim Identity Information", "tactic": "reconnaissance"}],
+         "evidence": "Group-IB: workers pick targets from classifieds and collect name, address, phone."},
+        {"stage": "Weaponization",
+         "what_happens": "The worker asks the gang's Telegram bot to generate a phishing set (fake 'OLX delivery', payment and refund pages) on a lookalike domain registered by the admins.",
+         "techniques": [
+           {"id": "T1583.001", "name": "Acquire Infrastructure: Domains", "tactic": "resource-development"},
+           {"id": "T1588.002", "name": "Obtain Capabilities: Tool", "tactic": "resource-development"},
+           {"id": "T1585.001", "name": "Establish Accounts: Social Media Accounts", "tactic": "resource-development"},
+           {"id": "T1608.005", "name": "Stage Capabilities: Link Target", "tactic": "resource-development"}],
+         "evidence": "My Week 2 data: olxkz[.]pay-sacure4ds[.]ru = brand keyword + fake '3-D Secure' on a cheap .ru domain. Group-IB: Telegram bots build the whole phishing set in minutes."},
+        {"stage": "Delivery",
+         "what_happens": "Posing as a buyer, the scammer writes in OLX chat, moves the victim to WhatsApp, Viber or Telegram and sends the link: 'I already paid, receive the money here'.",
+         "techniques": [
+           {"id": "T1566.003", "name": "Phishing: Spearphishing via Service", "tactic": "initial-access"},
+           {"id": "T1566.002", "name": "Phishing: Spearphishing Link", "tactic": "initial-access"}],
+         "evidence": "Group-IB: victims are moved from the platform chat to messengers before the link is sent."},
+        {"stage": "Exploitation",
+         "what_happens": "No software bug is exploited. The 'exploit' is social engineering: the victim opens the link and types card number, CVV and the 3-D Secure SMS code on the fake page.",
+         "techniques": [
+           {"id": "T1204.001", "name": "User Execution: Malicious Link", "tactic": "execution"},
+           {"id": "T1598.003", "name": "Phishing for Information: Spearphishing Link", "tactic": "reconnaissance"}],
+         "evidence": "Fake 3-D Secure page (pay-sacure4ds). Group-IB 2023: newer kits also show fake bank login pages and check the card balance."},
+        {"stage": "Installation",
+         "what_happens": "Nothing is installed on the victim's device. This stage is ABSENT for this attack; persistence is replaced by abusing the stolen card or bank login.",
+         "techniques": [
+           {"id": "T1078", "name": "Valid Accounts", "tactic": "persistence"}],
+         "evidence": "Only in the 'fake bank login' variant (Group-IB 2023), where the stolen online-banking login is reused."},
+        {"stage": "Command & Control",
+         "what_happens": "The 'C2' is the gang's Telegram bot and panel: every entered card and SMS code is pushed to the worker in real time so they can use it before it expires.",
+         "techniques": [
+           {"id": "T1102", "name": "Web Service (Telegram as the channel)", "tactic": "command-and-control"}],
+         "evidence": "Group-IB: bots and admin panels coordinate workers. No implant on the victim, so this is adversary-side C2."},
+        {"stage": "Actions on Objectives",
+         "what_happens": "Money is withdrawn from the card. A 'caller' posing as OLX support may then offer a 'refund' to steal a second time. Profits are split, most of it goes to the worker.",
+         "techniques": [
+           {"id": "T1657", "name": "Financial Theft", "tactic": "impact"},
+           {"id": "T1566.004", "name": "Phishing: Spearphishing Voice (refund call)", "tactic": "initial-access"}],
+         "evidence": "Group-IB 2023: 393 groups with 38,000+ members, $64.5M earned (H1 2020 - H1 2023), average loss $353."}
+      ]
+    },
+    {
+      "id": "apple_kit",
+      "short": "Cluster C01 / Apple ID kit",
+      "title": "Cluster C01: Apple ID phishing kit on .com.kz lookalikes (from my Week 3 correlation)",
+      "confidence": "medium (my own data; the iServer link is a hypothesis)",
+      "sources": [
+        "My Week 3 correlation: 5 domains share the kit path /m/sing/*",
+        "Group-IB / Europol, Operation Kaerb against iServer (Sep 2024): https://www.prnewswire.com/news-releases/group-ib-contributes-to-international-operation-kaerb-that-led-to-the-arrest-of-the-masterminds-behind-the-iserver-phishing-as-a-service-platform-which-claimed-more-than-483-000-victims-globally-302253202.html"
+      ],
+      "stages": [
+        {"stage": "Reconnaissance",
+         "what_happens": "Hypothesis: the operator holds a stolen iPhone and reads the owner's contact number and language from Lost Mode.",
+         "techniques": [{"id": "T1589", "name": "Gather Victim Identity Information", "tactic": "reconnaissance"}],
+         "evidence": "iServer workflow (Group-IB): victim details come from the device in Lost Mode."},
+        {"stage": "Weaponization",
+         "what_happens": "Registers Apple-themed domains in .com.kz and deploys the same kit on each.",
+         "techniques": [
+           {"id": "T1583.001", "name": "Acquire Infrastructure: Domains", "tactic": "resource-development"},
+           {"id": "T1608.005", "name": "Stage Capabilities: Link Target", "tactic": "resource-development"}],
+         "evidence": "appleid, appleoficial, idapple, miaccount, soporteapple [.]com[.]kz, same path /m/sing/*"},
+        {"stage": "Delivery",
+         "what_happens": "Short SMS link: 'Your iPhone was found, see its location'. The short /m/<token> path is typical for SMS links.",
+         "techniques": [{"id": "T1566.002", "name": "Phishing: Spearphishing Link", "tactic": "initial-access"}],
+         "evidence": "URL shape /m/sing/<token> (short, mobile-first)."},
+        {"stage": "Exploitation",
+         "what_happens": "The owner opens the fake 'Find My / Apple ID' page and enters the Apple ID password.",
+         "techniques": [
+           {"id": "T1204.001", "name": "User Execution: Malicious Link", "tactic": "execution"},
+           {"id": "T1598.003", "name": "Phishing for Information: Spearphishing Link", "tactic": "reconnaissance"}],
+         "evidence": "Spanish words in domains (soporte, oficial) fit the Spanish-speaking iServer ecosystem."},
+        {"stage": "Installation",
+         "what_happens": "No malware. The stolen Apple ID is used directly. Stage ABSENT on the victim side.",
+         "techniques": [{"id": "T1078.004", "name": "Valid Accounts: Cloud Accounts", "tactic": "persistence"}],
+         "evidence": "Hypothesis based on the kit's purpose."},
+        {"stage": "Command & Control",
+         "what_happens": "The kit's panel checks the password and sends it to the operator.",
+         "techniques": [{"id": "T1102", "name": "Web Service", "tactic": "command-and-control"}],
+         "evidence": "iServer 'verified' stolen credentials automatically (Group-IB)."},
+        {"stage": "Actions on Objectives",
+         "what_happens": "The operator removes the iPhone from the owner's Apple ID (Activation Lock off) and resells the phone.",
+         "techniques": [
+           {"id": "T1531", "name": "Account Access Removal", "tactic": "impact"},
+           {"id": "T1657", "name": "Financial Theft", "tactic": "impact"}],
+         "evidence": "Operation Kaerb: ~483,000 victims, 17 arrests (Sep 2024)."}
+      ]
+    }
+  ],
+  "courses_of_action": [
+    {"stage": "Reconnaissance", "detect": "Monitor CT logs / feeds for new brand-keyword domains", "deny": "Hide seller phone numbers on OLX by default", "disrupt": "", "degrade": "", "deceive": "Honeypot ads to attract scammers and collect their links", "destroy": ""},
+    {"stage": "Weaponization", "detect": "Sigma DNS rule dns_kz_brand_lookalike (Week 3); MISP event with kit clusters", "deny": "Registrar checks for brand names in new domains", "disrupt": "Takedown requests to registrar / hosting (KZ-CERT)", "degrade": "", "deceive": "", "destroy": "Report Telegram bots for removal"},
+    {"stage": "Delivery", "detect": "Platform chat filter for 'pay/receive money' links and off-platform moves", "deny": "Block known phishing domains (blocklist_domains.txt) in DNS / browsers", "disrupt": "In-app warning when a link is sent in chat", "degrade": "", "deceive": "", "destroy": ""},
+    {"stage": "Exploitation", "detect": "Sigma proxy rule proxy_kz_phishing_kit_path (Week 3)", "deny": "User awareness: to receive money a seller never needs to enter CVV or an SMS code", "disrupt": "Safe Browsing / browser warnings", "degrade": "", "deceive": "", "destroy": ""},
+    {"stage": "Installation", "detect": "Bank / Apple: new device or new login location alert", "deny": "Strong 2FA not based on SMS (push in bank app)", "disrupt": "", "degrade": "", "deceive": "", "destroy": ""},
+    {"stage": "Command & Control", "detect": "Threat intel on Telegram bot names (MISP)", "deny": "", "disrupt": "Bot takedown by Telegram", "degrade": "", "deceive": "Feed fake card data to the panel (canary cards)", "destroy": ""},
+    {"stage": "Actions on Objectives", "detect": "Bank anti-fraud: card-not-present payment right after a 3-DS code request", "deny": "Card limits for online payments", "disrupt": "Instant card block via bank app", "degrade": "Delay of large transfers to new recipients", "deceive": "", "destroy": "Law-enforcement action (example: Operation Kaerb)"}
+  ]
+}

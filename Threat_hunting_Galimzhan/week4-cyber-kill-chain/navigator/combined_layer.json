@@ -1,0 +1,142 @@
+{
+  "name": "W4 KZ phishing: both cases",
+  "description": "Classiscam/OLX.kz + cluster C01 Apple kit",
+  "domain": "enterprise-attack",
+  "versions": {
+    "attack": "16",
+    "navigator": "5.1.0",
+    "layer": "4.5"
+  },
+  "techniques": [
+    {
+      "techniqueID": "T1589",
+      "tactic": "reconnaissance",
+      "score": 2,
+      "comment": "cases: apple_kit, classiscam",
+      "enabled": true
+    },
+    {
+      "techniqueID": "T1593",
+      "tactic": "reconnaissance",
+      "score": 1,
+      "comment": "cases: classiscam",
+      "enabled": true
+    },
+    {
+      "techniqueID": "T1598.003",
+      "tactic": "reconnaissance",
+      "score": 2,
+      "comment": "cases: apple_kit, classiscam",
+      "enabled": true
+    },
+    {
+      "techniqueID": "T1583.001",
+      "tactic": "resource-development",
+      "score": 2,
+      "comment": "cases: apple_kit, classiscam",
+      "enabled": true
+    },
+    {
+      "techniqueID": "T1585.001",
+      "tactic": "resource-development",
+      "score": 1,
+      "comment": "cases: classiscam",
+      "enabled": true
+    },
+    {
+      "techniqueID": "T1588.002",
+      "tactic": "resource-development",
+      "score": 1,
+      "comment": "cases: classiscam",
+      "enabled": true
+    },
+    {
+      "techniqueID": "T1608.005",
+      "tactic": "resource-development",
+      "score": 2,
+      "comment": "cases: apple_kit, classiscam",
+      "enabled": true
+    },
+    {
+      "techniqueID": "T1566.002",
+      "tactic": "initial-access",
+      "score": 2,
+      "comment": "cases: apple_kit, classiscam",
+      "enabled": true
+    },
+    {
+      "techniqueID": "T1566.003",
+      "tactic": "initial-access",
+      "score": 1,
+      "comment": "cases: classiscam",
+      "enabled": true
+    },
+    {
+      "techniqueID": "T1566.004",
+      "tactic": "initial-access",
+      "score": 1,
+      "comment": "cases: classiscam",
+      "enabled": true
+    },
+    {
+      "techniqueID": "T1204.001",
+      "tactic": "execution",
+      "score": 2,
+      "comment": "cases: apple_kit, classiscam",
+      "enabled": true
+    },
+    {
+      "techniqueID": "T1078",
+      "tactic": "persistence",
+      "score": 1,
+      "comment": "cases: classiscam",
+      "enabled": true
+    },
+    {
+      "techniqueID": "T1078.004",
+      "tactic": "persistence",
+      "score": 1,
+      "comment": "cases: apple_kit",
+      "enabled": true
+    },
+    {
+      "techniqueID": "T1102",
+      "tactic": "command-and-control",
+      "score": 2,
+      "comment": "cases: apple_kit, classiscam",
+      "enabled": true
+    },
+    {
+      "techniqueID": "T1531",
+      "tactic": "impact",
+      "score": 1,
+      "comment": "cases: apple_kit",
+      "enabled": true
+    },
+    {
+      "techniqueID": "T1657",
+      "tactic": "impact",
+      "score": 2,
+      "comment": "cases: apple_kit, classiscam",
+      "enabled": true
+    }
+  ],
+  "gradient": {
+    "colors": [
+      "#fbd38d",
+      "#c53030"
+    ],
+    "minValue": 1,
+    "maxValue": 2
+  },
+  "legendItems": [
+    {
+      "label": "used in one case",
+      "color": "#fbd38d"
+    },
+    {
+      "label": "used in both cases",
+      "color": "#c53030"
+    }
+  ]
+}

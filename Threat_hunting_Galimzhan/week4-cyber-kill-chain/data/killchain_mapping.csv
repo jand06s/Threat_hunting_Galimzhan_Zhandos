@@ -1,0 +1,25 @@
+case,stage_no,stage,technique_id,technique,tactic
+classiscam,1,Reconnaissance,T1593,Search Open Websites/Domains,reconnaissance
+classiscam,1,Reconnaissance,T1589,Gather Victim Identity Information,reconnaissance
+classiscam,2,Weaponization,T1583.001,Acquire Infrastructure: Domains,resource-development
+classiscam,2,Weaponization,T1588.002,Obtain Capabilities: Tool,resource-development
+classiscam,2,Weaponization,T1585.001,Establish Accounts: Social Media Accounts,resource-development
+classiscam,2,Weaponization,T1608.005,Stage Capabilities: Link Target,resource-development
+classiscam,3,Delivery,T1566.003,Phishing: Spearphishing via Service,initial-access
+classiscam,3,Delivery,T1566.002,Phishing: Spearphishing Link,initial-access
+classiscam,4,Exploitation,T1204.001,User Execution: Malicious Link,execution
+classiscam,4,Exploitation,T1598.003,Phishing for Information: Spearphishing Link,reconnaissance
+classiscam,5,Installation,T1078,Valid Accounts,persistence
+classiscam,6,Command & Control,T1102,Web Service (Telegram as the channel),command-and-control
+classiscam,7,Actions on Objectives,T1657,Financial Theft,impact
+classiscam,7,Actions on Objectives,T1566.004,Phishing: Spearphishing Voice (refund call),initial-access
+apple_kit,1,Reconnaissance,T1589,Gather Victim Identity Information,reconnaissance
+apple_kit,2,Weaponization,T1583.001,Acquire Infrastructure: Domains,resource-development
+apple_kit,2,Weaponization,T1608.005,Stage Capabilities: Link Target,resource-development
+apple_kit,3,Delivery,T1566.002,Phishing: Spearphishing Link,initial-access
+apple_kit,4,Exploitation,T1204.001,User Execution: Malicious Link,execution
+apple_kit,4,Exploitation,T1598.003,Phishing for Information: Spearphishing Link,reconnaissance
+apple_kit,5,Installation,T1078.004,Valid Accounts: Cloud Accounts,persistence
+apple_kit,6,Command & Control,T1102,Web Service,command-and-control
+apple_kit,7,Actions on Objectives,T1531,Account Access Removal,impact
+apple_kit,7,Actions on Objectives,T1657,Financial Theft,impact
