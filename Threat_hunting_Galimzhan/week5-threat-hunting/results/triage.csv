@@ -1,0 +1,5 @@
+user,host,found_by,severity,next_step
+user07,olxkz.pay-sacure4ds.ru,H1+H2+H3,HIGH: data submitted,"reset passwords / block card, isolate, interview user"
+user11,kaspi-bonus-kz.top,H1+H2,HIGH: data submitted,"reset passwords / block card, isolate, interview user"
+user19,soporteapple.com.kz,H3,MEDIUM: visited only,"confirm nothing was entered, awareness note"
+user23,post-kz.lol,H1+H3,LOW: blocked by proxy,"no action, blocklist worked"

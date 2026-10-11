@@ -1,0 +1,35 @@
+[
+  {
+    "id": "S1",
+    "user": "user07",
+    "day": 2,
+    "time": "14:05",
+    "host": "olxkz.pay-sacure4ds.ru",
+    "story": "Seller opened a fake 'OLX delivery' link from a messenger and submitted the payment form"
+  },
+  {
+    "id": "S2",
+    "user": "user19",
+    "day": 4,
+    "time": "10:40",
+    "host": "soporteapple.com.kz",
+    "story": "User opened an Apple-ID lure (kit cluster C01) but did not submit anything"
+  },
+  {
+    "id": "S3",
+    "user": "user23",
+    "day": 5,
+    "time": "16:20",
+    "host": "post-kz.lol",
+    "action": "blocked",
+    "story": "Proxy blocked a Kazpost lure (domain was on the Week 3 blocklist)"
+  },
+  {
+    "id": "S4",
+    "user": "user11",
+    "day": 3,
+    "time": "19:55",
+    "host": "kaspi-bonus-kz.top",
+    "story": "NEW domain, not in any feed: fake 'Kaspi bonus' page, credentials submitted"
+  }
+]

@@ -1,0 +1,38 @@
+* Week 5 — Splunk SPL versions of the three hunts.
+* Load data: Settings > Add Data > Upload > dns.json / proxy.json, sourcetype = _json,
+* index = th_lab. Field names match the JSON keys.
+
+* ---------------------------------------------------------------------------
+* H1 (hypothesis-driven, DNS): a DNS query contains a KZ brand keyword but is
+* not an official domain. Same logic as my Week 3 Sigma rule (v3).
+* ---------------------------------------------------------------------------
+index=th_lab sourcetype=_json source=*dns*
+  query IN (*kaspi*, *halyk*, *homebank*, *egov*, *kazpost*, *post-kz*, *olxkz*, *olx-kz*)
+  NOT (query="kaspi.kz" OR query="*.kaspi.kz" OR query="halykbank.kz" OR query="*.halykbank.kz"
+       OR query="homebank.kz" OR query="*.homebank.kz" OR query="egov.kz" OR query="*.egov.kz"
+       OR query="kazpost.kz" OR query="*.kazpost.kz" OR query="post.kz" OR query="*.post.kz"
+       OR query="olx.kz" OR query="*.olx.kz")
+  NOT (query="*kaspian*" OR query="*turkiyegov*")
+| stats count AS events, dc(user) AS users, values(user) AS who, min(_time) AS first_seen BY query
+| convert ctime(first_seen) | sort first_seen
+
+* ---------------------------------------------------------------------------
+* H2 (hypothesis-driven, proxy): a form was submitted (POST) to a RARE domain
+* (seen by <= 2 users) that is not on the allowlist. Catches unknown phishing.
+* ---------------------------------------------------------------------------
+index=th_lab sourcetype=_json source=*proxy*
+| eventstats dc(user) AS users_seen BY host
+| search method=POST users_seen<=2
+  NOT host IN ("kaspi.kz","halykbank.kz","homebank.kz","egov.kz","kazpost.kz","post.kz","olx.kz",
+               "google.com","mail.google.com","outlook.office.com","github.com","apple.com",
+               "icloud.com","youtube.com","instagram.com","web.telegram.org","web.whatsapp.com")
+| table _time, user, host, url_path, bytes_out, users_seen | sort _time
+
+* ---------------------------------------------------------------------------
+* H3 (intel-driven, DNS): sweep DNS queries against my Week 3 IOC list.
+* Upload normalized_iocs.csv as a lookup "th_iocs.csv" (key column: indicator).
+* ---------------------------------------------------------------------------
+index=th_lab sourcetype=_json source=*dns*
+| lookup th_iocs.csv indicator AS query OUTPUT confidence, cluster, impersonated, category
+| search confidence=*
+| table _time, user, query, confidence, cluster, impersonated, category | sort _time

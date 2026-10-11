@@ -1,0 +1,47 @@
+# Week 5 — Elastic (KQL / ES|QL) versions of the three hunts.
+# Load data: Kibana > Add data > Upload a file > dns.json / proxy.json.
+# Index names below: th_dns, th_proxy.
+
+# ===========================================================================
+# H1 (hypothesis-driven, DNS) — KQL for Discover
+# ===========================================================================
+(query: *kaspi* or query: *halyk* or query: *homebank* or query: *egov* or
+ query: *kazpost* or query: *post-kz* or query: *olxkz* or query: *olx-kz*)
+and not (query: "kaspi.kz" or query: *.kaspi.kz or query: "halykbank.kz" or query: *.halykbank.kz
+ or query: "homebank.kz" or query: *.homebank.kz or query: "egov.kz" or query: *.egov.kz
+ or query: "kazpost.kz" or query: *.kazpost.kz or query: "post.kz" or query: *.post.kz
+ or query: "olx.kz" or query: *.olx.kz)
+and not (query: *kaspian* or query: *turkiyegov*)
+
+# Same hunt as ES|QL (gives the aggregated table):
+# FROM th_dns
+# | WHERE query RLIKE ".*(kaspi|halyk|homebank|egov|kazpost|post-kz|olxkz|olx-kz).*"
+#     AND NOT query IN ("kaspi.kz","halykbank.kz","homebank.kz","egov.kz","kazpost.kz","post.kz","olx.kz")
+#     AND NOT ENDS_WITH(query, ".kaspi.kz") AND NOT ENDS_WITH(query, ".olx.kz")
+#     AND NOT query RLIKE ".*(kaspian|turkiyegov).*"
+# | STATS events = COUNT(*), users = COUNT_DISTINCT(user) BY query
+# | SORT events DESC
+
+# ===========================================================================
+# H2 (hypothesis-driven, proxy) — ES|QL: POST to a rare non-allowlisted host
+# ===========================================================================
+FROM th_proxy
+| STATS users_seen = COUNT_DISTINCT(user), posts = COUNT(*) BY host
+| WHERE users_seen <= 2
+| KEEP host, users_seen
+# then in Discover filter: method:POST and host:(the rare hosts above)
+# and not host:(kaspi.kz or halykbank.kz or homebank.kz or egov.kz or kazpost.kz or post.kz or
+#   olx.kz or google.com or mail.google.com or outlook.office.com or github.com or apple.com or
+#   icloud.com or youtube.com or instagram.com or web.telegram.org or web.whatsapp.com)
+
+# ===========================================================================
+# H3 (intel-driven, DNS) — enrich with an IOC enrich policy, then filter
+# ===========================================================================
+# 1) Index normalized_iocs.csv as th_iocs (match_field: indicator).
+# 2) Create and execute an enrich policy "kz_iocs" on th_iocs matching field "indicator".
+# 3) ES|QL:
+FROM th_dns
+| ENRICH kz_iocs ON query WITH confidence, cluster, impersonated, category
+| WHERE confidence IS NOT NULL
+| KEEP @timestamp, user, query, confidence, cluster, impersonated, category
+| SORT @timestamp ASC

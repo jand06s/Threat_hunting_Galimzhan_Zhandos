@@ -1,0 +1,4 @@
+time_local,user,query,confidence,cluster,impersonated,category
+2026-10-07 14:05:21,user07,olxkz.pay-sacure4ds.ru,medium,,OLX.kz,brand-impersonation
+2026-10-09 10:40:01,user19,soporteapple.com.kz,medium,C01-kit,Apple/iCloud,kz-hosted
+2026-10-10 16:20:14,user23,post-kz.lol,medium,,Kazpost,brand-impersonation
