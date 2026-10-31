@@ -1,0 +1,22 @@
+// Week 7 — MITRE CAR analytics in Elastic (ES|QL).
+// Load data: Kibana > Add data > Upload a file > sysmon_proc.json. Index: th_proc.
+// On a real host: Winlogbeat/Elastic Agent Sysmon module, fields process.* / process.parent.*
+
+// ===========================================================================
+// CAR-2013-02-003 — Processes Spawning cmd.exe -> ATT&CK T1059.003
+// ===========================================================================
+FROM th_proc
+| WHERE process_name == "cmd.exe"
+    AND parent_process_name IN ("outlook.exe", "winword.exe", "excel.exe", "powerpnt.exe", "acrord32.exe")
+| KEEP @timestamp, host, user, parent_process_name, process_name, command_line
+| SORT @timestamp ASC
+
+// ===========================================================================
+// CAR-2014-04-003 — PowerShell Execution -> ATT&CK T1059.001  (v2, tuned)
+// ===========================================================================
+FROM th_proc
+| WHERE process_name == "powershell.exe"
+    AND parent_process_name != "explorer.exe"
+    AND (command_line LIKE "*-enc*" OR command_line LIKE "*hidden*")
+| KEEP @timestamp, host, user, parent_process_name, command_line
+| SORT @timestamp ASC

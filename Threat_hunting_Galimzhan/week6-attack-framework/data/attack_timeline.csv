@@ -1,0 +1,8 @@
+t,observed,data_source,technique,tactic,name
+T+0:00,SMS/Telegram message with a shortened link delivered to the user,Application Log (messaging),T1566.002,TA0001 Initial Access,Phishing: Spearphishing Link
+T+0:05,DNS query for olxkz.pay-sacure4ds.ru from the user's host,Network Traffic: DNS,T1566.002,TA0001 Initial Access,Phishing: Spearphishing Link
+T+0:06,User clicks the link; browser issues HTTP GET to the phishing host,Network Traffic: Web (proxy),T1204.001,TA0002 Execution,User Execution: Malicious Link
+T+0:30,Fake 3-D Secure form shown; user types card number + CVV + SMS code,Network Traffic: Web (proxy),T1598.003,TA0043 Reconnaissance,Phishing for Information: Spearphishing Link
+T+0:31,HTTP POST with form body to the phishing host (credentials leave the org),Network Traffic: Web (proxy),T1056.003,TA0006 Credential Access,Input Capture: Web Portal Capture
+T+0:32,Phishing panel pushes the stolen data to the operator (Telegram bot),Threat Intel (adversary-side),T1102,TA0011 Command and Control,Web Service
+T+2:00,Card charged / money withdrawn using the stolen details,Bank anti-fraud log,T1657,TA0040 Impact,Financial Theft

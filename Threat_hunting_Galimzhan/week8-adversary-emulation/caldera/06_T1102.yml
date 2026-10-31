@@ -1,0 +1,25 @@
+# INERT emulation ability (echo only) — safe detection test, not attack code.
+[
+  {
+    "id": "76eaa209-1296-5087-9c6c-d0c711b2d967",
+    "name": "06 Exfil channel via Telegram bot/panel",
+    "description": "INERT purple-team marker for T1102 (Command & Control). Procedure: The phishing panel forwards every captured record to the operator in real time. Detection: Threat intel on bot names in MISP (W3). This ability performs no real action; it only logs a marker.",
+    "tactic": "command-&-control",
+    "technique": {
+      "attack_id": "T1102",
+      "name": "Exfil channel via Telegram bot/panel"
+    },
+    "platforms": {
+      "linux": {
+        "sh": {
+          "command": "echo '[emulation] step 6 T1102 Exfil channel via Telegram bot/panel'"
+        }
+      },
+      "windows": {
+        "psh": {
+          "command": "Write-Output '[emulation] step 6 T1102 Exfil channel via Telegram bot/panel'"
+        }
+      }
+    }
+  }
+]

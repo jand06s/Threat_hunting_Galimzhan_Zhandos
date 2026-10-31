@@ -1,0 +1,25 @@
+# INERT emulation ability (echo only) — safe detection test, not attack code.
+[
+  {
+    "id": "dd126e3f-9de3-5b83-8f14-050a998ede48",
+    "name": "03 Victim opens link / document",
+    "description": "INERT purple-team marker for T1204 (Execution). Procedure: User clicks the link or opens the attachment. Detection: Hunt H2 POST-to-rare-host (W5); CAR-2013-02-003 (W7). This ability performs no real action; it only logs a marker.",
+    "tactic": "execution",
+    "technique": {
+      "attack_id": "T1204",
+      "name": "Victim opens link / document"
+    },
+    "platforms": {
+      "linux": {
+        "sh": {
+          "command": "echo '[emulation] step 3 T1204 Victim opens link / document'"
+        }
+      },
+      "windows": {
+        "psh": {
+          "command": "Write-Output '[emulation] step 3 T1204 Victim opens link / document'"
+        }
+      }
+    }
+  }
+]

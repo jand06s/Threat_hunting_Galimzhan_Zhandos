@@ -1,0 +1,25 @@
+# INERT emulation ability (echo only) — safe detection test, not attack code.
+[
+  {
+    "id": "6d961acd-80bb-5de9-b06f-6df66badfad0",
+    "name": "08 Cash out the stolen funds / unlock phone",
+    "description": "INERT purple-team marker for T1657 (Impact). Procedure: Money withdrawn, or the stolen Apple ID removes the device's Activation Lock. Detection: Bank anti-fraud (out of scope); law enforcement (Operation Kaerb). This ability performs no real action; it only logs a marker.",
+    "tactic": "impact",
+    "technique": {
+      "attack_id": "T1657",
+      "name": "Cash out the stolen funds / unlock phone"
+    },
+    "platforms": {
+      "linux": {
+        "sh": {
+          "command": "echo '[emulation] step 8 T1657 Cash out the stolen funds / unlock phone'"
+        }
+      },
+      "windows": {
+        "psh": {
+          "command": "Write-Output '[emulation] step 8 T1657 Cash out the stolen funds / unlock phone'"
+        }
+      }
+    }
+  }
+]

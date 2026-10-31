@@ -1,0 +1,25 @@
+# INERT emulation ability (echo only) — safe detection test, not attack code.
+[
+  {
+    "id": "9e950a37-2d0c-55fb-a947-ce87d8a25a70",
+    "name": "07 Send stolen data out over the web service",
+    "description": "INERT purple-team marker for T1567 (Exfiltration). Procedure: Captured card/credential records leave over HTTPS to the operator's service. Detection: Proxy egress to a rare/new host (hunt H2, W5). This ability performs no real action; it only logs a marker.",
+    "tactic": "exfiltration",
+    "technique": {
+      "attack_id": "T1567",
+      "name": "Send stolen data out over the web service"
+    },
+    "platforms": {
+      "linux": {
+        "sh": {
+          "command": "echo '[emulation] step 7 T1567 Send stolen data out over the web service'"
+        }
+      },
+      "windows": {
+        "psh": {
+          "command": "Write-Output '[emulation] step 7 T1567 Send stolen data out over the web service'"
+        }
+      }
+    }
+  }
+]

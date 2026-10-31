@@ -1,0 +1,3 @@
+host,chain,CAR-2013-02-003,CAR-2014-04-003
+WKS-07,outlook.exe -> cmd.exe -> powershell.exe,detected,detected
+WKS-19,winword.exe -> cmd.exe -> powershell.exe,detected,detected

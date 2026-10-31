@@ -1,0 +1,3 @@
+time,host,user,parent,child,command_line
+2026-10-28 12:00:07+05:00,WKS-07,user07,cmd.exe,powershell.exe,powershell.exe -nop -w hidden -enc <base64>
+2026-10-28 14:00:07+05:00,WKS-19,user19,cmd.exe,powershell.exe,powershell.exe -nop -w hidden -enc <base64>

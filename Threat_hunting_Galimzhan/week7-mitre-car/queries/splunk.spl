@@ -1,0 +1,32 @@
+* Week 7 — MITRE CAR analytics in Splunk SPL.
+* Load data: Settings > Add Data > Upload > sysmon_proc.json, sourcetype=_json, index=th_proc.
+* (On a real host these fields come from Sysmon EventID 1 via the Splunk Add-on for Sysmon.)
+
+* ===========================================================================
+* CAR-2013-02-003 — Processes Spawning cmd.exe  ->  ATT&CK T1059.003
+* Phishing-attachment variant: an Office/mail/PDF app spawning cmd.exe means a
+* malicious document was opened (CAR's own description names Outlook/Adobe Reader).
+* ===========================================================================
+index=th_proc sourcetype=_json event_id=1 process_name=cmd.exe
+  parent_process_name IN (outlook.exe, winword.exe, excel.exe, powerpnt.exe, acrord32.exe)
+| table _time, host, user, parent_process_name, process_name, command_line
+| sort _time
+
+* Real Sysmon field names (if using the TA):
+* source="XmlWinEventLog:Microsoft-Windows-Sysmon/Operational" EventCode=1
+*   Image="*\\cmd.exe" (ParentImage="*\\outlook.exe" OR ParentImage="*\\winword.exe" ...)
+
+* ===========================================================================
+* CAR-2014-04-003 — PowerShell Execution  ->  ATT&CK T1059.001
+* v1 (literal CAR pseudocode): parent != explorer.exe  -> too noisy in our org.
+* v2 (tuned): add the encoded / hidden-window discriminator.
+* ===========================================================================
+* v1 (shown to demonstrate alert fatigue — do NOT deploy as-is):
+index=th_proc sourcetype=_json event_id=1 process_name=powershell.exe parent_process_name!=explorer.exe
+| stats count BY host
+
+* v2 (deploy this):
+index=th_proc sourcetype=_json event_id=1 process_name=powershell.exe parent_process_name!=explorer.exe
+  (command_line="*-enc*" OR command_line="*hidden*")
+| table _time, host, user, parent_process_name, command_line
+| sort _time

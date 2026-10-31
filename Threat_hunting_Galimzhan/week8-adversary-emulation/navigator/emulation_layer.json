@@ -1,0 +1,63 @@
+{
+  "name": "Phishing emulation plan (Week 8)",
+  "versions": {
+    "attack": "16",
+    "navigator": "4.9.5",
+    "layer": "4.5"
+  },
+  "domain": "enterprise-attack",
+  "description": "Techniques in the initial-access -> persistence -> exfiltration emulation plan.",
+  "techniques": [
+    {
+      "techniqueID": "T1566.002",
+      "score": 1,
+      "enabled": true
+    },
+    {
+      "techniqueID": "T1566.001",
+      "score": 1,
+      "enabled": true
+    },
+    {
+      "techniqueID": "T1204",
+      "score": 1,
+      "enabled": true
+    },
+    {
+      "techniqueID": "T1056.003",
+      "score": 1,
+      "enabled": true
+    },
+    {
+      "techniqueID": "T1078",
+      "score": 1,
+      "enabled": true
+    },
+    {
+      "techniqueID": "T1102",
+      "score": 1,
+      "enabled": true
+    },
+    {
+      "techniqueID": "T1567",
+      "score": 1,
+      "enabled": true
+    },
+    {
+      "techniqueID": "T1657",
+      "score": 1,
+      "enabled": true
+    }
+  ],
+  "gradient": {
+    "colors": [
+      "#ffe0b2",
+      "#c05621"
+    ],
+    "minValue": 1,
+    "maxValue": 2
+  },
+  "showTacticRowBackground": true,
+  "tacticRowBackground": "#2b6cb0",
+  "sorting": 3
+}

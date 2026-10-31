@@ -1,0 +1,25 @@
+# INERT emulation ability (echo only) — safe detection test, not attack code.
+[
+  {
+    "id": "af8f8b6c-1e57-5718-9fd7-5fe6c5233600",
+    "name": "05 Reuse stolen valid account",
+    "description": "INERT purple-team marker for T1078 (Persistence). Procedure: Operator logs in to the victim's bank / Apple ID with the stolen credentials. Detection: Bank new-device alert (out of my scope); MISP IOC on the login host. This ability performs no real action; it only logs a marker.",
+    "tactic": "persistence",
+    "technique": {
+      "attack_id": "T1078",
+      "name": "Reuse stolen valid account"
+    },
+    "platforms": {
+      "linux": {
+        "sh": {
+          "command": "echo '[emulation] step 5 T1078 Reuse stolen valid account'"
+        }
+      },
+      "windows": {
+        "psh": {
+          "command": "Write-Output '[emulation] step 5 T1078 Reuse stolen valid account'"
+        }
+      }
+    }
+  }
+]

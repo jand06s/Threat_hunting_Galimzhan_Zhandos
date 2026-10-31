@@ -1,0 +1,14 @@
+[
+  {
+    "host": "WKS-07",
+    "user": "user07",
+    "chain": "outlook.exe -> cmd.exe -> powershell.exe",
+    "initiating_technique": "T1566.001 (malicious attachment)"
+  },
+  {
+    "host": "WKS-19",
+    "user": "user19",
+    "chain": "winword.exe -> cmd.exe -> powershell.exe",
+    "initiating_technique": "T1566.001 (malicious attachment)"
+  }
+]

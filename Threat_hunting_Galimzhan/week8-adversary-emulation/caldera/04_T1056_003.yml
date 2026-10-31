@@ -1,0 +1,25 @@
+# INERT emulation ability (echo only) — safe detection test, not attack code.
+[
+  {
+    "id": "e4030e3d-fd09-55e9-8c09-317838e85cbf",
+    "name": "04 Harvest card data / Apple ID on the fake page",
+    "description": "INERT purple-team marker for T1056.003 (Credential Access). Procedure: Fake 3-D Secure or Apple-ID form captures the data the victim types. Detection: Hunt H2 (W5) on the POST to the phishing host. This ability performs no real action; it only logs a marker.",
+    "tactic": "credential-access",
+    "technique": {
+      "attack_id": "T1056.003",
+      "name": "Harvest card data / Apple ID on the fake page"
+    },
+    "platforms": {
+      "linux": {
+        "sh": {
+          "command": "echo '[emulation] step 4 T1056.003 Harvest card data / Apple ID on the fake page'"
+        }
+      },
+      "windows": {
+        "psh": {
+          "command": "Write-Output '[emulation] step 4 T1056.003 Harvest card data / Apple ID on the fake page'"
+        }
+      }
+    }
+  }
+]

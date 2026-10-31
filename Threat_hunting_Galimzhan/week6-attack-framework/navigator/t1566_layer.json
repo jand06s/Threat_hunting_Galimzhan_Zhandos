@@ -1,0 +1,59 @@
+{
+  "name": "T1566.002 spearphishing-link attack path (Week 6)",
+  "versions": {
+    "attack": "16",
+    "navigator": "4.9.5",
+    "layer": "4.5"
+  },
+  "domain": "enterprise-attack",
+  "description": "Techniques observed when one user clicks a KZ-brand phishing link and submits card data.",
+  "techniques": [
+    {
+      "techniqueID": "T1566.002",
+      "score": 2,
+      "enabled": true,
+      "comment": "observed in the Week 6 simulation"
+    },
+    {
+      "techniqueID": "T1204.001",
+      "score": 1,
+      "enabled": true,
+      "comment": "observed in the Week 6 simulation"
+    },
+    {
+      "techniqueID": "T1598.003",
+      "score": 1,
+      "enabled": true,
+      "comment": "observed in the Week 6 simulation"
+    },
+    {
+      "techniqueID": "T1056.003",
+      "score": 1,
+      "enabled": true,
+      "comment": "observed in the Week 6 simulation"
+    },
+    {
+      "techniqueID": "T1102",
+      "score": 1,
+      "enabled": true,
+      "comment": "observed in the Week 6 simulation"
+    },
+    {
+      "techniqueID": "T1657",
+      "score": 1,
+      "enabled": true,
+      "comment": "observed in the Week 6 simulation"
+    }
+  ],
+  "gradient": {
+    "colors": [
+      "#ffe0b2",
+      "#c05621"
+    ],
+    "minValue": 1,
+    "maxValue": 2
+  },
+  "showTacticRowBackground": true,
+  "tacticRowBackground": "#2b6cb0",
+  "sorting": 3
+}
