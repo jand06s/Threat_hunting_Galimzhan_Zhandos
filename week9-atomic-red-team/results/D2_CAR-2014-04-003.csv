@@ -1,2 +1,0 @@
-t,host,parent,child,command_line,atomic_id
-2026-11-09 13:08:05+05:00,LAB-WIN10,cmd.exe,powershell.exe,powershell.exe -nop -w hidden -enc SQBFAFgA...,T1059.001

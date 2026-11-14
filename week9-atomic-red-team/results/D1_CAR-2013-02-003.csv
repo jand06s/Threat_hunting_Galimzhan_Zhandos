@@ -1,2 +1,0 @@
-t,host,parent,child,command_line,atomic_id
-2026-11-09 13:16:05+05:00,LAB-WIN10,winword.exe,cmd.exe,cmd.exe /c cscript.exe C:\Users\Public\art.jse,T1204.002
