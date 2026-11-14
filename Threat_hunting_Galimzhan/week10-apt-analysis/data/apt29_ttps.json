@@ -1,0 +1,505 @@
+{
+ "group": "APT29",
+ "aliases": [
+  "APT29",
+  "IRON RITUAL",
+  "IRON HEMLOCK",
+  "NobleBaron",
+  "Dark Halo",
+  "NOBELIUM",
+  "UNC2452",
+  "YTTRIUM",
+  "The Dukes",
+  "Cozy Bear",
+  "CozyDuke",
+  "SolarStorm",
+  "Blue Kitsune",
+  "UNC3524",
+  "Midnight Blizzard"
+ ],
+ "techniques": [
+  {
+   "id": "T1003.002",
+   "name": "Security Account Manager",
+   "tactics": [
+    "credential-access"
+   ]
+  },
+  {
+   "id": "T1003.004",
+   "name": "LSA Secrets",
+   "tactics": [
+    "credential-access"
+   ]
+  },
+  {
+   "id": "T1005",
+   "name": "Data from Local System",
+   "tactics": [
+    "collection"
+   ]
+  },
+  {
+   "id": "T1016.001",
+   "name": "Internet Connection Discovery",
+   "tactics": [
+    "discovery"
+   ]
+  },
+  {
+   "id": "T1021.007",
+   "name": "Cloud Services",
+   "tactics": [
+    "lateral-movement"
+   ]
+  },
+  {
+   "id": "T1027.001",
+   "name": "Binary Padding",
+   "tactics": [
+    "stealth"
+   ]
+  },
+  {
+   "id": "T1027.002",
+   "name": "Software Packing",
+   "tactics": [
+    "stealth"
+   ]
+  },
+  {
+   "id": "T1027.006",
+   "name": "HTML Smuggling",
+   "tactics": [
+    "stealth"
+   ]
+  },
+  {
+   "id": "T1036.005",
+   "name": "Match Legitimate Resource Name or Location",
+   "tactics": [
+    "stealth"
+   ]
+  },
+  {
+   "id": "T1037",
+   "name": "Boot or Logon Initialization Scripts",
+   "tactics": [
+    "persistence",
+    "privilege-escalation"
+   ]
+  },
+  {
+   "id": "T1037.004",
+   "name": "RC Scripts",
+   "tactics": [
+    "persistence",
+    "privilege-escalation"
+   ]
+  },
+  {
+   "id": "T1047",
+   "name": "Windows Management Instrumentation",
+   "tactics": [
+    "execution"
+   ]
+  },
+  {
+   "id": "T1053.005",
+   "name": "Scheduled Task",
+   "tactics": [
+    "execution",
+    "persistence",
+    "privilege-escalation"
+   ]
+  },
+  {
+   "id": "T1059.001",
+   "name": "PowerShell",
+   "tactics": [
+    "execution"
+   ]
+  },
+  {
+   "id": "T1059.006",
+   "name": "Python",
+   "tactics": [
+    "execution"
+   ]
+  },
+  {
+   "id": "T1059.009",
+   "name": "Cloud API",
+   "tactics": [
+    "execution"
+   ]
+  },
+  {
+   "id": "T1068",
+   "name": "Exploitation for Privilege Escalation",
+   "tactics": [
+    "privilege-escalation"
+   ]
+  },
+  {
+   "id": "T1070.004",
+   "name": "File Deletion",
+   "tactics": [
+    "stealth"
+   ]
+  },
+  {
+   "id": "T1070.006",
+   "name": "Timestomp",
+   "tactics": [
+    "stealth"
+   ]
+  },
+  {
+   "id": "T1078",
+   "name": "Valid Accounts",
+   "tactics": [
+    "stealth",
+    "persistence",
+    "privilege-escalation",
+    "initial-access"
+   ]
+  },
+  {
+   "id": "T1078.003",
+   "name": "Local Accounts",
+   "tactics": [
+    "stealth",
+    "persistence",
+    "privilege-escalation",
+    "initial-access"
+   ]
+  },
+  {
+   "id": "T1078.004",
+   "name": "Cloud Accounts",
+   "tactics": [
+    "stealth",
+    "persistence",
+    "privilege-escalation",
+    "initial-access"
+   ]
+  },
+  {
+   "id": "T1087.004",
+   "name": "Cloud Account",
+   "tactics": [
+    "discovery"
+   ]
+  },
+  {
+   "id": "T1090.002",
+   "name": "External Proxy",
+   "tactics": [
+    "command-and-control"
+   ]
+  },
+  {
+   "id": "T1090.003",
+   "name": "Multi-hop Proxy",
+   "tactics": [
+    "command-and-control"
+   ]
+  },
+  {
+   "id": "T1090.004",
+   "name": "Domain Fronting",
+   "tactics": [
+    "command-and-control"
+   ]
+  },
+  {
+   "id": "T1098.002",
+   "name": "Additional Email Delegate Permissions",
+   "tactics": [
+    "persistence",
+    "privilege-escalation"
+   ]
+  },
+  {
+   "id": "T1098.005",
+   "name": "Device Registration",
+   "tactics": [
+    "persistence",
+    "privilege-escalation"
+   ]
+  },
+  {
+   "id": "T1105",
+   "name": "Ingress Tool Transfer",
+   "tactics": [
+    "command-and-control"
+   ]
+  },
+  {
+   "id": "T1110.001",
+   "name": "Password Guessing",
+   "tactics": [
+    "credential-access"
+   ]
+  },
+  {
+   "id": "T1110.003",
+   "name": "Password Spraying",
+   "tactics": [
+    "credential-access"
+   ]
+  },
+  {
+   "id": "T1114.002",
+   "name": "Remote Email Collection",
+   "tactics": [
+    "collection"
+   ]
+  },
+  {
+   "id": "T1133",
+   "name": "External Remote Services",
+   "tactics": [
+    "persistence",
+    "initial-access"
+   ]
+  },
+  {
+   "id": "T1136.003",
+   "name": "Cloud Account",
+   "tactics": [
+    "persistence"
+   ]
+  },
+  {
+   "id": "T1190",
+   "name": "Exploit Public-Facing Application",
+   "tactics": [
+    "initial-access"
+   ]
+  },
+  {
+   "id": "T1199",
+   "name": "Trusted Relationship",
+   "tactics": [
+    "initial-access"
+   ]
+  },
+  {
+   "id": "T1203",
+   "name": "Exploitation for Client Execution",
+   "tactics": [
+    "execution"
+   ]
+  },
+  {
+   "id": "T1204.001",
+   "name": "Malicious Link",
+   "tactics": [
+    "execution"
+   ]
+  },
+  {
+   "id": "T1204.002",
+   "name": "Malicious File",
+   "tactics": [
+    "execution"
+   ]
+  },
+  {
+   "id": "T1218.005",
+   "name": "Mshta",
+   "tactics": [
+    "stealth"
+   ]
+  },
+  {
+   "id": "T1505.003",
+   "name": "Web Shell",
+   "tactics": [
+    "persistence"
+   ]
+  },
+  {
+   "id": "T1528",
+   "name": "Steal Application Access Token",
+   "tactics": [
+    "credential-access"
+   ]
+  },
+  {
+   "id": "T1546.003",
+   "name": "Windows Management Instrumentation Event Subscription",
+   "tactics": [
+    "privilege-escalation",
+    "persistence"
+   ]
+  },
+  {
+   "id": "T1546.008",
+   "name": "Accessibility Features",
+   "tactics": [
+    "privilege-escalation",
+    "persistence"
+   ]
+  },
+  {
+   "id": "T1547.001",
+   "name": "Registry Run Keys / Startup Folder",
+   "tactics": [
+    "persistence",
+    "privilege-escalation"
+   ]
+  },
+  {
+   "id": "T1548.002",
+   "name": "Bypass User Account Control",
+   "tactics": [
+    "privilege-escalation"
+   ]
+  },
+  {
+   "id": "T1550.003",
+   "name": "Pass the Ticket",
+   "tactics": [
+    "lateral-movement"
+   ]
+  },
+  {
+   "id": "T1553.005",
+   "name": "Mark-of-the-Web Bypass",
+   "tactics": [
+    "defense-impairment"
+   ]
+  },
+  {
+   "id": "T1556.007",
+   "name": "Hybrid Identity",
+   "tactics": [
+    "defense-impairment",
+    "persistence",
+    "credential-access"
+   ]
+  },
+  {
+   "id": "T1566.001",
+   "name": "Spearphishing Attachment",
+   "tactics": [
+    "initial-access"
+   ]
+  },
+  {
+   "id": "T1566.002",
+   "name": "Spearphishing Link",
+   "tactics": [
+    "initial-access"
+   ]
+  },
+  {
+   "id": "T1566.003",
+   "name": "Spearphishing via Service",
+   "tactics": [
+    "initial-access"
+   ]
+  },
+  {
+   "id": "T1568",
+   "name": "Dynamic Resolution",
+   "tactics": [
+    "command-and-control"
+   ]
+  },
+  {
+   "id": "T1573",
+   "name": "Encrypted Channel",
+   "tactics": [
+    "command-and-control"
+   ]
+  },
+  {
+   "id": "T1583.006",
+   "name": "Web Services",
+   "tactics": [
+    "resource-development"
+   ]
+  },
+  {
+   "id": "T1586.002",
+   "name": "Email Accounts",
+   "tactics": [
+    "resource-development"
+   ]
+  },
+  {
+   "id": "T1586.003",
+   "name": "Cloud Accounts",
+   "tactics": [
+    "resource-development"
+   ]
+  },
+  {
+   "id": "T1587.001",
+   "name": "Malware",
+   "tactics": [
+    "resource-development"
+   ]
+  },
+  {
+   "id": "T1587.003",
+   "name": "Digital Certificates",
+   "tactics": [
+    "resource-development"
+   ]
+  },
+  {
+   "id": "T1588.002",
+   "name": "Tool",
+   "tactics": [
+    "resource-development"
+   ]
+  },
+  {
+   "id": "T1595.002",
+   "name": "Vulnerability Scanning",
+   "tactics": [
+    "reconnaissance"
+   ]
+  },
+  {
+   "id": "T1621",
+   "name": "Multi-Factor Authentication Request Generation",
+   "tactics": [
+    "credential-access"
+   ]
+  },
+  {
+   "id": "T1649",
+   "name": "Steal or Forge Authentication Certificates",
+   "tactics": [
+    "credential-access"
+   ]
+  },
+  {
+   "id": "T1651",
+   "name": "Cloud Administration Command",
+   "tactics": [
+    "execution"
+   ]
+  },
+  {
+   "id": "T1665",
+   "name": "Hide Infrastructure",
+   "tactics": [
+    "command-and-control"
+   ]
+  },
+  {
+   "id": "T1685.002",
+   "name": "Disable or Modify Cloud Log",
+   "tactics": [
+    "defense-impairment"
+   ]
+  }
+ ]
+}
